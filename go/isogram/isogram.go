@@ -3,7 +3,7 @@ package isogram
 import "strings"
 
 func IsIsogram(word string) bool {
-	letterMap := make(map[string]bool)
+	letterMap := make(map[string]struct{})
 
 	normalizedWord := strings.ToLower(strings.ReplaceAll(word, " ", ""))
 
@@ -12,11 +12,11 @@ func IsIsogram(word string) bool {
 		if key == "-" {
 			continue
 		}
-		value, exists := letterMap[key]
+		_, exists := letterMap[key]
 		if exists {
 			return false
 		}
-		letterMap[key] = value
+		letterMap[key] = struct{}{}
 	}
 
 	return true
