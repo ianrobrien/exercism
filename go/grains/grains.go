@@ -9,18 +9,35 @@ func Square(number int) (uint64, error) {
 	if number > 64 {
 		return 0, errors.New("number cannot be greater than 64")
 	}
-	sum := uint64(1)
-	for i := 1; i < number; i++ {
-		sum *= 2
+
+	return square(number)(), nil
+}
+
+func square(number int) func() uint64 {
+	squares := make([]uint64, 65)
+	squares[1] = 1
+
+	return func() uint64 {
+		if squares[number] != 0 {
+			return squares[number]
+		}
+		for i := 1; i <= number; i++ {
+			if squares[i] != 0 {
+				continue
+			}
+			squares[i] = squares[i-1] * 2
+		}
+
+		return squares[number]
 	}
-	return sum, nil
 }
 
 func Total() uint64 {
 	var sum uint64
+
 	for i := 1; i <= 64; i++ {
-		square, _ := Square(i)
-		sum += square
+		sum += square(i)()
 	}
+
 	return sum
 }
