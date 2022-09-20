@@ -1,13 +1,31 @@
 package clock
 
-// Define the Clock type here.
+import "fmt"
+
+type Clock struct {
+	hour   int
+	minute int
+}
 
 func New(h, m int) Clock {
-	panic("Please implement the New function")
+	hour := h
+	minute := m
+	for minute >= 60 {
+		minute -= 60
+		hour++
+	}
+	for hour >= 24 {
+		hour -= 24
+	}
+	return Clock{
+		hour:   hour,
+		minute: minute,
+	}
 }
 
 func (c Clock) Add(m int) Clock {
-	panic("Please implement the Add function")
+	c.minute += m
+	return c
 }
 
 func (c Clock) Subtract(m int) Clock {
@@ -15,5 +33,5 @@ func (c Clock) Subtract(m int) Clock {
 }
 
 func (c Clock) String() string {
-	panic("Please implement the String function")
+	return fmt.Sprintf("%02d:%02d", c.hour, c.minute)
 }
