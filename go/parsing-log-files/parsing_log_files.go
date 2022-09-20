@@ -1,6 +1,7 @@
 package parsinglogfiles
 
 import (
+	"fmt"
 	"regexp"
 	"strings"
 )
@@ -32,10 +33,27 @@ func CountQuotedPasswords(lines []string) int {
 }
 
 func RemoveEndOfLineText(text string) string {
-	return ""
+	re := regexp.MustCompile(`end-of-line[0-9]*`)
+
+	return re.ReplaceAllString(text, "")
 }
 
 func TagWithUserName(lines []string) []string {
-	return []string{}
+	re := regexp.MustCompile(`User\s+([a-zA-Z0-9]+)`)
+
+	var out []string
+
+	for i := range lines {
+		var line string
+		tokens := re.FindStringSubmatch(lines[i])
+		if len(tokens) == 2 {
+			line = fmt.Sprintf("[USR] %s %s", tokens[1], lines[i])
+		} else {
+			line = lines[i]
+		}
+		out = append(out, line)
+	}
+
+	return out
 
 }
