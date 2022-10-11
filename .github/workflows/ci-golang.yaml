@@ -7,7 +7,7 @@ jobs:
     name: run
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@3.1.0
+      - uses: actions/checkout@v3.1.0
       - name: Use Go 1.19
         uses: cedrickring/golang-action/go1.19@1.6.0
       - name: Custom project path
