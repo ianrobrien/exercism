@@ -6,7 +6,7 @@ on:
 name: CI - Go
 jobs:
   golangci:
-    name: lint
+    name: Golang CI
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
