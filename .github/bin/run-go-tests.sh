@@ -4,6 +4,7 @@ exercism_base_url="https://github.com/exercism/cli/releases/download/"
 exercism_version="3.2.0"
 exercism_filename="exercism-${exercism_version}-linux-x86_64.tar.gz"
 exercism_url="${exercism_base_url}/v${exercism_version}/${exercism_filename}"
+exercism_expected_hash="4ea3e1ea8916a8003da95dbd6eef7a3a29802e637ed6a0f2aaaa2f1c98754915"
 
 # Function to download, verify, and extract a tar.gz file
 download_verify_extract() {
@@ -80,7 +81,7 @@ run_exercism_test() {
 
 
 
-download_verify_extract "$exercism_url" "$exercism_version" "$exercism_filename" "$exercism_hash"
+download_verify_extract "$exercism_url" "$exercism_version" "$exercism_filename" "$exercism_expected_hash"
 
 # Initialize the exit code to 0
 exit_code=0
