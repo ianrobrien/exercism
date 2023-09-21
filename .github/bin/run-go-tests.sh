@@ -60,7 +60,6 @@ lint_go_files() {
     else
       # If it fails, print the output and set exit_code to 1
       echo "Linting failed in $(pwd):"
-      golangci-lint run "$files_to_test"
       exit_code=1
     fi
   fi
@@ -100,7 +99,9 @@ exit_code=0
 
 # Iterate through all subdirectories of the "go" directory
 for exercise in go/*/; do
+  echo "lining all go files"
   lint_go_files "$exercise"
+  echo "running exercism tests"
   run_exercism_test "$exercise"
 done
 
