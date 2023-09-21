@@ -93,7 +93,7 @@ run_exercism_test() {
 
 
 download_verify_extract "$exercism_url" "$exercism_version" "$exercism_filename" "$exercism_expected_hash"
-#download_verify_extract "$golangci_lint_url" "$golangci_lint_version" "$golangci_lint_filename" "$golangci_lint_expected_hash"
+download_verify_extract "$golangci_lint_url" "$golangci_lint_version" "$golangci_lint_filename" "$golangci_lint_expected_hash"
 
 # Initialize the exit code to 0
 exit_code=0
