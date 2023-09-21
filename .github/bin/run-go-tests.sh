@@ -29,6 +29,7 @@ lint_go_files() {
 
 # Function to run "exercism test" in a directory
 run_exercism_test() {
+  echo $PATH
   local dir="$1"
   pushd "$dir" || exit 1
 
