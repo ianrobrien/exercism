@@ -64,6 +64,6 @@ func DescribeAnything(i interface{}) string {
 	case FancyNumberBox:
 		return DescribeFancyNumberBox(v)
 	default:
-		return fmt.Sprintf("Return to sender")
+		return "Return to sender"
 	}
 }
