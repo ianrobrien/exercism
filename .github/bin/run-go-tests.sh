@@ -52,7 +52,7 @@ lint_go_files() {
     echo "$PWD"
 
     # Use find to filter Go source code files for linting (exclude test files)
-    files_to_test=$(find . -type f -name "*.go" ! -name "*_test.go")
+    files_to_test=$(find . -type f -name "*.go" ! -name "*_test.go" -print0 | xargs -0)
 
     # Run golangci-lint quietly and capture its exit code
     if [ -n "$files_to_test" ]; then
