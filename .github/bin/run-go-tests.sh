@@ -36,7 +36,7 @@ download_verify_extract() {
     if tar -tzf "$filename" | grep -q '/'; then
         tar -xzf "$filename" -C bin --strip-components=1
     else
-        tar -xzf "$filename" -C bin/
+        tar -xzf "$filename" -C bin
     fi
 
     export PATH="$GITHUB_WORKSPACE/bin:$PATH"
