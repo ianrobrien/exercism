@@ -24,6 +24,7 @@ else
 fi
 
 # Extract the tar.gz file to the current directory
-mkdir bin && tar -xzvf "$filename" -C bin
+mkdir bin && tar -xzvf "$filename"
+mv golangci-lint-${version}-linux-amd64/golangci-lint bin
 export PATH=./bin:"$PATH"
 
