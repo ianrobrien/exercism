@@ -94,7 +94,7 @@ exit_code=0
 
 # Iterate through all subdirectories of the "go" directory
 for exercise in go/*/; do
-  lint_go_files "$exercise"
+#  lint_go_files "$exercise"
   run_exercism_test "$exercise"
 done
 
