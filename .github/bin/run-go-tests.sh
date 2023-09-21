@@ -32,12 +32,8 @@ download_verify_extract() {
         exit 1
     fi
 
-    tar -tzf "$filename" | grep -q '/'
-    tar -tzf "$filename" | grep '/'
-    tar -tzf "$filename" | grep -q '/'
-
     mkdir -p bin
-    if tar -tzf "$filename" | grep -q '/' > /dev/null; then
+    if tar --list -zf "$filename" | grep -q '/' > /dev/null; then
       tar -xzf "$filename" -C bin --strip-components=1
     else
       tar -xzf "$filename" -C bin
