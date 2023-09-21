@@ -3,7 +3,7 @@
 # Define the URL, version, and expected SHA256 hash as variables
 base_url="https://github.com/golangci/golangci-lint/releases/download/"
 version="1.54.2"
-filename="golangci-lint-{version}-linux-amd64.tar.gz"
+filename="golangci-lint-${version}-linux-amd64.tar.gz"
 url="${base_url}/v${version}/${filename}"
 
 # Expected SHA256 hash (replace with the actual expected hash)
