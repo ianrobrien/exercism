@@ -25,4 +25,4 @@ fi
 
 # Extract the tar.gz file to the current directory
 mkdir -p bin && tar -xzvf "$filename" -C bin
-echo "##[add-path]${{ github.workspace }}/bin"
+export PATH="${{ github.workspace }}/bin:$PATH"
