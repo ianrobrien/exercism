@@ -27,3 +27,4 @@ fi
 mkdir -p bin && tar -xzvf "$filename" -C bin
 echo $PWD
 export PATH="$GITHUB_WORKSPACE/bin:$PATH"
+echo $PATH
