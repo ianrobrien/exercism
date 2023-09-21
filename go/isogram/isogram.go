@@ -1,15 +1,18 @@
 package isogram
 
-import "strings"
+import (
+	"strings"
+	"unicode"
+)
 
 func IsIsogram(word string) bool {
-	letterMap := make(map[string]struct{})
+	letterMap := make(map[rune]struct{})
 
-	normalizedWord := strings.ToLower(strings.ReplaceAll(word, " ", ""))
+	runes := []rune(strings.ToLower(word))
 
-	for i := range normalizedWord {
-		key := string(normalizedWord[i])
-		if key == "-" {
+	for i := range runes {
+		key := runes[i]
+		if !unicode.IsLetter(key) {
 			continue
 		}
 		_, exists := letterMap[key]
