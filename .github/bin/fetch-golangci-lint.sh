@@ -24,7 +24,6 @@ else
 fi
 
 # Extract the tar.gz file to the current directory
-tar -xzvf "$filename"
-chmod +x "$filename"
+mkdir bin && tar -xzvf "$filename" -C bin
+export PATH=./bin:"$PATH"
 
-mv $filename /usr/bin
