@@ -24,5 +24,5 @@ else
 fi
 
 # Extract the tar.gz file to the current directory
-mkdir -p bin && tar -xzvf "$filename" -C bin
+mkdir -p bin && tar -xzvf "$filename" -C bin/
 export PATH="$GITHUB_WORKSPACE/bin:$PATH"
