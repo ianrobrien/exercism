@@ -26,3 +26,5 @@ fi
 # Extract the tar.gz file to the current directory
 tar -xzvf "$filename"
 chmod +x "$filename"
+
+mv $filename /usr/bin
