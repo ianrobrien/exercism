@@ -6,6 +6,12 @@ exercism_filename="exercism-${exercism_version}-linux-x86_64.tar.gz"
 exercism_url="${exercism_base_url}/v${exercism_version}/${exercism_filename}"
 exercism_expected_hash="4ea3e1ea8916a8003da95dbd6eef7a3a29802e637ed6a0f2aaaa2f1c98754915"
 
+golangci_lint_base_url="https://github.com/golangci/golangci-lint/releases/download/"
+golangci_lint_version="1.54.2"
+golangci_lint_filename="golangci-lint-${version}-linux-amd64.tar.gz"
+golangci_lint_url="${golangci_lint_base_url}/v${golangci_lint_version}/${golangci_lint_filename}"
+golangci_lint_expected_hash="17c9ca05253efe833d47f38caf670aad2202b5e6515879a99873fabd4c7452b3"
+
 # Function to download, verify, and extract a tar.gz file
 download_verify_extract() {
     local url="$1"
@@ -43,12 +49,12 @@ lint_go_files() {
 
   # Run golangci-lint quietly and capture its exit code
   if [ -n "$files_to_test" ]; then
-    if golangci-lint run $files_to_test; then
+    if golangci-lint run "$files_to_test"; then
       : # Do nothing on success
     else
       # If it fails, print the output and set exit_code to 1
       echo "Linting failed in $(pwd):"
-      golangci-lint run $files_to_test
+      golangci-lint run "$files_to_test"
       exit_code=1
     fi
   fi
@@ -59,7 +65,6 @@ lint_go_files() {
 
 # Function to run "exercism test" in a directory
 run_exercism_test() {
-  echo $PATH
   local dir="$1"
   pushd "$dir" || exit 1
 
@@ -82,6 +87,7 @@ run_exercism_test() {
 
 
 download_verify_extract "$exercism_url" "$exercism_version" "$exercism_filename" "$exercism_expected_hash"
+#download_verify_extract "$golangci_lint_url" "$golangci_lint_version" "$golangci_lint_filename" "$golangci_lint_expected_hash"
 
 # Initialize the exit code to 0
 exit_code=0
