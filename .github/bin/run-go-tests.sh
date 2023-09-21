@@ -102,9 +102,9 @@ download_verify_extract "$golangci_lint_url" "$golangci_lint_version" "$golangci
 exit_code=0
 
 echo "lining all go files"
-lint_go_files "$exercise"
+lint_go_files "$PWD"
 echo "running exercism tests"
-run_exercism_test "$exercise"
+run_exercism_test "$PWD"
 
 # Return the exit code at the end of the script
 exit $exit_code
