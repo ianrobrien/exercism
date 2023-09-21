@@ -52,16 +52,10 @@ lint_go_files() {
   for exercise in go/*/; do
     pushd "$exercise" || exit 1
 
-    echo "$PWD"
-
-    find . -type f -name "*.go" ! -name "*_test.go" | while read -r file; do
-        if golangci-lint run "$file"; then
-            echo "Linting for $file passed successfully."
-        else
-            echo "Linting for $file failed."
-            exit_code=1
-        fi
-    done
+    if ! golangci-lint run .; then
+        echo "Linting for $PWD failed."
+        exit_code=1
+    fi
 
     # Return to the original directory
     popd || exit 1
