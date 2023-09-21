@@ -26,5 +26,6 @@ fi
 # Extract the tar.gz file to the current directory
 mkdir -p bin && tar -xzvf "$filename" -C bin
 cd bin
+pwd
 ls
 export PATH=./bin:"$PATH"
