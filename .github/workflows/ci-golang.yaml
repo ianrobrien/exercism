@@ -13,10 +13,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            src:
+            - 'go/**'
       - uses: actions/setup-go@v4
         with:
           go-version: 1.21.1
           cache: false
       - name: Lint and test exercises
         shell: bash
+        if: steps.changes.outputs.src == 'true'
         run: ./.github/bin/run-go-tests.sh
