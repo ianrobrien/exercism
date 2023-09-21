@@ -43,7 +43,6 @@ download_verify_extract() {
     fi
 
     export PATH="$GITHUB_WORKSPACE/bin:$PATH"
-    export PATH="$GITHUB_WORKSPACE/bin:$PATH"
 }
 
 # Function to lint Go source files in a directory
