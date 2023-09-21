@@ -54,7 +54,7 @@ lint_go_files() {
 
     if ! golangci-lint run .; then
         echo "Linting for $PWD failed."
-        exit_code=1
+        declare -g exit_code=1
     fi
 
     # Return to the original directory
@@ -73,7 +73,7 @@ run_exercism_test() {
     else
       # If it fails, print the output and set exit_code to 1
       echo "Testing failed in $(pwd):"
-      exit_code=1
+      declare -g exit_code=1
     fi
 
     # Return to the original directory
