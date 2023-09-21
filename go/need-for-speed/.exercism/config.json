@@ -1,5 +1,4 @@
 {
-  "blurb": "Learn about structs by racing remote controlled cars.",
   "authors": [
     "tehsphinx"
   ],
@@ -7,9 +6,6 @@
     "oanaOM",
     "eklatzer",
     "andrerfcsantos"
-  ],
-  "forked_from": [
-    "csharp/need-for-speed"
   ],
   "files": {
     "solution": [
@@ -20,6 +16,16 @@
     ],
     "exemplar": [
       ".meta/exemplar.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
+  },
+  "forked_from": [
+    "csharp/need-for-speed"
+  ],
+  "blurb": "Learn about structs by racing remote controlled cars.",
+  "custom": {
+    "taskIdsEnabled": true
   }
 }

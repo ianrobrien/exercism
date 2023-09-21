@@ -35,7 +35,7 @@ func CountInRank(cb Chessboard, rank int) int {
 	occupiedCount := 0
 	for _, letter := range "ABCDEFGH" {
 		parsedLetter := string(letter)
-		file := cb[parsedLetter]
+		file, _ := cb[parsedLetter]
 		occupied := file[rank-1]
 		if occupied {
 			occupiedCount++

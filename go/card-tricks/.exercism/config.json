@@ -1,5 +1,4 @@
 {
-  "blurb": "Learn about slices by doing card tricks.",
   "authors": [
     "tehsphinx"
   ],
@@ -15,6 +14,13 @@
     ],
     "exemplar": [
       ".meta/exemplar.go"
+    ],
+    "invalidator": [
+      "go.mod"
     ]
+  },
+  "blurb": "Learn about slices by doing card tricks.",
+  "custom": {
+    "taskIdsEnabled": true
   }
 }
