@@ -35,7 +35,14 @@ download_verify_extract() {
     fi
 
     # Extract the tar.gz file to the current directory
-    mkdir -p bin && tar -xzvf "$filename" -C bin/
+    mkdir -p bin
+    if tar -tzf "$filename" | grep -q '/'; then
+        tar -xzf "$filename" -C bin --strip-components=1
+    else
+        tar -xzf "$filename" -C bin/
+    fi
+
+    export PATH="$GITHUB_WORKSPACE/bin:$PATH"
     export PATH="$GITHUB_WORKSPACE/bin:$PATH"
 }
 
