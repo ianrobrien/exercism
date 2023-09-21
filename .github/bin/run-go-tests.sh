@@ -89,11 +89,6 @@ run_exercism_test() {
   done
 }
 
-
-
-
-
-
 download_verify_extract "$exercism_url" "$exercism_filename" "$exercism_expected_hash"
 download_verify_extract "$golangci_lint_url" "$golangci_lint_filename" "$golangci_lint_expected_hash"
 
@@ -101,8 +96,8 @@ download_verify_extract "$golangci_lint_url" "$golangci_lint_filename" "$golangc
 exit_code=0
 
 # Iterate through all subdirectories of the "go" directory
-#  echo "linting all go files"
-#  lint_go_files "$exercise"
+echo "linting all go files"
+lint_go_files "$exercise"
 echo "running exercism tests"
 run_exercism_test "$exercise"
 
