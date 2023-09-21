@@ -16,30 +16,30 @@ golangci_lint_url="${golangci_lint_base_url}/v${golangci_lint_version}/${golangc
 exit_code=0
 
 download_verify_extract() {
-    local url="$1"
-    local filename="$2"
-    local expected_hash="$3"
+  local url="$1"
+  local filename="$2"
+  local expected_hash="$3"
 
-    curl -sSfL -o "$filename" "$url"
+  curl -sSfL -o "$filename" "$url"
 
-    local computed_hash
-    computed_hash=$(sha256sum "$filename" | awk '{print $1}')
+  local computed_hash
+  computed_hash=$(sha256sum "$filename" | awk '{print $1}')
 
-    if [ "$computed_hash" == "$expected_hash" ]; then
-        echo "File integrity verified. Hash matches: $computed_hash"
-    else
-        echo "File integrity check failed. Hash does not match."
-        exit 1
-    fi
+  if [ "$computed_hash" == "$expected_hash" ]; then
+    echo "File integrity verified. Hash matches: $computed_hash"
+  else
+    echo "File integrity check failed. Hash does not match."
+    exit 1
+  fi
 
-    mkdir -p bin
-    if tar --list -zf "$filename" | grep -q '/' > /dev/null; then
-      tar -xzf "$filename" -C bin --strip-components=1
-    else
-      tar -xzf "$filename" -C bin
-    fi
+  mkdir -p bin
+  if tar --list -zf "$filename" | grep -q '/' > /dev/null; then
+    tar -xzf "$filename" -C bin --strip-components=1
+  else
+    tar -xzf "$filename" -C bin
+  fi
 
-    export PATH="$GITHUB_WORKSPACE/bin:$PATH"
+  export PATH="$GITHUB_WORKSPACE/bin:$PATH"
 }
 
 lint_go_files() {
@@ -47,8 +47,7 @@ lint_go_files() {
     pushd "$exercise" || exit 1
 
     if ! golangci-lint run .; then
-        echo "Linting for $PWD failed."
-        declare -g exit_code=1
+      declare -g exit_code=1
     fi
 
     popd || exit 1
@@ -60,7 +59,6 @@ run_exercism_test() {
     pushd "$exercise" || exit 1
 
     if ! exercism test; then
-      echo "Testing failed in $(pwd):"
       declare -g exit_code=1
     fi
 
@@ -68,10 +66,10 @@ run_exercism_test() {
   done
 }
 
-#download_verify_extract "$exercism_url" "$exercism_filename" "$exercism_expected_hash"
+download_verify_extract "$exercism_url" "$exercism_filename" "$exercism_expected_hash"
 download_verify_extract "$golangci_lint_url" "$golangci_lint_filename" "$golangci_lint_expected_hash"
 
-#lint_go_files "$exercise"
-#run_exercism_test "$exercise"
+lint_go_files "$exercise"
+run_exercism_test "$exercise"
 
 exit $exit_code
