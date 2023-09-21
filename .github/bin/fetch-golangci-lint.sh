@@ -26,5 +26,5 @@
 ## Extract the tar.gz file to the current directory
 #mkdir -p bin && tar -xzvf "$filename"
 #mv golangci-lint-${version}-linux-amd64/golangci-lint bin
-#export PATH=./bin:"$PATH"
+#echo "##[add-path]${{ github.workspace }}/bin"
 #
