@@ -1,7 +1,36 @@
 #!/bin/bash
 
-# Initialize the exit code to 0
-exit_code=0
+exercism_base_url="https://github.com/exercism/cli/releases/download/"
+exercism_version="3.2.0"
+exercism_filename="exercism-${exercism_version}-linux-x86_64.tar.gz"
+exercism_url="${exercism_base_url}/v${exercism_version}/${exercism_filename}"
+
+# Function to download, verify, and extract a tar.gz file
+download_verify_extract() {
+    local url="$1"
+    local version="$2"
+    local filename="$3"
+    local expected_hash="$4"
+
+    # Use curl to download the file
+    curl -sSfL -o "$filename" "$url"
+
+    # Compute the SHA256 hash of the downloaded file
+    local computed_hash
+    computed_hash=$(sha256sum "$filename" | awk '{print $1}')
+
+    # Compare the computed hash with the expected hash
+    if [ "$computed_hash" == "$expected_hash" ]; then
+        echo "File integrity verified. Hash matches: $computed_hash"
+    else
+        echo "File integrity check failed. Hash does not match."
+        exit 1
+    fi
+
+    # Extract the tar.gz file to the current directory
+    mkdir -p bin && tar -xzvf "$filename" -C bin/
+    export PATH="$GITHUB_WORKSPACE/bin:$PATH"
+}
 
 # Function to lint Go source files in a directory
 lint_go_files() {
@@ -45,6 +74,16 @@ run_exercism_test() {
   # Return to the original directory
   popd || exit 1
 }
+
+
+
+
+
+
+download_verify_extract "$exercism_url" "$exercism_version" "$exercism_filename" "$exercism_hash"
+
+# Initialize the exit code to 0
+exit_code=0
 
 # Iterate through all subdirectories of the "go" directory
 for exercise in go/*/; do

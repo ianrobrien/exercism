@@ -16,6 +16,5 @@ jobs:
       - name: Lint and Test exercises
         shell: bash
         run: |
-          source ./.github/bin/fetch-exercism.sh
           source ./.github/bin/fetch-golangci-lint.sh
           source ./.github/bin/run-go-tests.sh
