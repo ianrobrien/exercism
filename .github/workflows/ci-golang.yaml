@@ -17,3 +17,4 @@ jobs:
         shell: bash
         run: |
           ./.github/bin/fetch-golangci-lint
+          ./.github/bin/run-tests          
