@@ -33,9 +33,7 @@ download_verify_extract() {
     fi
 
     mkdir -p bin
-    echo "Checking if tarball contains a directory"
-    if tar -tzf "$filename" | grep -q '/'; then
-      echo "Stripping directory"
+    if tar -tzf "$filename" | grep -q '/' > /dev/null; then
       tar -xzf "$filename" -C bin --strip-components=1
     else
       tar -xzf "$filename" -C bin
