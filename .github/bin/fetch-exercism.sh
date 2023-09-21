@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the URL, version, and expected SHA256 hash as variables
-base_url="https://github.com/exercism/cli/releases/download"
+base_url="https://github.com/exercism/cli/releases/download/"
 version="3.2.0"
 filename="exercism-${version}-linux-x86_64.tar.gz"
 url="${base_url}/v${version}/${filename}"
