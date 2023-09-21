@@ -1,0 +1,3 @@
+run:
+  skip-files:
+    - grains_test.go
