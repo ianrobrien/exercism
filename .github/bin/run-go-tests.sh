@@ -39,7 +39,6 @@ run_exercism_test() {
   else
     # If it fails, print the output and set exit_code to 1
     echo "Testing failed in $(pwd):"
-    exercism test
     exit_code=1
   fi
 
