@@ -1,16 +1,16 @@
 #!/bin/bash
 
-exercism_base_url="https://github.com/exercism/cli/releases/download/"
 exercism_version="3.2.0"
+exercism_expected_hash="4ea3e1ea8916a8003da95dbd6eef7a3a29802e637ed6a0f2aaaa2f1c98754915"
+exercism_base_url="https://github.com/exercism/cli/releases/download/"
 exercism_filename="exercism-${exercism_version}-linux-x86_64.tar.gz"
 exercism_url="${exercism_base_url}/v${exercism_version}/${exercism_filename}"
-exercism_expected_hash="4ea3e1ea8916a8003da95dbd6eef7a3a29802e637ed6a0f2aaaa2f1c98754915"
 
-golangci_lint_base_url="https://github.com/golangci/golangci-lint/releases/download/"
 golangci_lint_version="1.54.2"
+golangci_lint_expected_hash="17c9ca05253efe833d47f38caf670aad2202b5e6515879a99873fabd4c7452b3"
+golangci_lint_base_url="https://github.com/golangci/golangci-lint/releases/download/"
 golangci_lint_filename="golangci-lint-${golangci_lint_version}-linux-amd64.tar.gz"
 golangci_lint_url="${golangci_lint_base_url}/v${golangci_lint_version}/${golangci_lint_filename}"
-golangci_lint_expected_hash="17c9ca05253efe833d47f38caf670aad2202b5e6515879a99873fabd4c7452b3"
 
 # Function to download, verify, and extract a tar.gz file
 download_verify_extract() {
