@@ -13,8 +13,12 @@ jobs:
       - uses: actions/setup-go@v4
         with:
           go-version: 1.21.1
-      - name: Lint and Test exercises
+      - name: Fetch Exercism
         shell: bash
-        run: |
-          ./.github/bin/fetch-exercism.sh
-          ./.github/bin/run-go-tests.sh
+        run: ./.github/bin/fetch-exercism.sh
+      - name: Fetch GolangCI-Lint
+        shell: bash
+        run: ./.github/bin/fetch-golangci-lint.sh
+      - name: Run Go Tests
+        shell: bash
+        run: ./.github/bin/run-go-tests.sh
