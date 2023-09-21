@@ -51,19 +51,14 @@ lint_go_files() {
 
     echo "$PWD"
 
-    # Use find to filter Go source code files for linting (exclude test files)
-    files_to_test=$(find . -type f -name "*.go" ! -name "*_test.go" -print0 | xargs -0)
-
-    # Run golangci-lint quietly and capture its exit code
-    if [ -n "$files_to_test" ]; then
-      if golangci-lint run "$files_to_test"; then
-        : # Do nothing on success
-      else
-        # If it fails, print the output and set exit_code to 1
-        echo "Linting failed in $(pwd):"
-        exit_code=1
-      fi
-    fi
+    find . -type f -name "*.go" ! -name "*_test.go" | while read -r file; do
+        if golangci-lint run "$file"; then
+            echo "Linting for $file passed successfully."
+        else
+            echo "Linting for $file failed."
+            exit_code=1
+        fi
+    done
 
     # Return to the original directory
     popd || exit 1
