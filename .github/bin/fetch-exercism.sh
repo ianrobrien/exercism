@@ -25,6 +25,5 @@ fi
 
 # Extract the tar.gz file to the current directory
 mkdir -p bin && tar -xzvf "$filename" -C bin
-echo $PWD
-export PATH="$GITHUB_WORKSPACE/bin:$PATH"
-echo $PATH
+export PATH="$GITHUB_WORKSPACE/bin:$PATH" >> "$HOME/.bashrc"
+source "$HOME/.bashrc"
