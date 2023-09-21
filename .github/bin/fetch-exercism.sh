@@ -7,7 +7,7 @@ filename="exercism-${version}-linux-x86_64.tar.gz"
 url="${base_url}/v${version}/${filename}"
 
 # Expected SHA256 hash (replace with the actual expected hash)
-expected_hash="YOUR_EXPECTED_SHA256_HASH_HERE"
+expected_hash="4ea3e1ea8916a8003da95dbd6eef7a3a29802e637ed6a0f2aaaa2f1c98754915"
 
 # Use curl to download the file
 curl -sSfL -o "$filename" "$url"
