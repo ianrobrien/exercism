@@ -8,7 +8,7 @@ on:
   pull_request:
 
 jobs:
-  golang-ci:
+  java-ci:
     name: Java CI
     runs-on: ubuntu-latest
     steps:
