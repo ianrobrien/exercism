@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
 
-echo "Hello, World!"
+main() {
+  echo "Hello, World!"
+}
+
+# call main with all of the positional arguments
+main "$@"
