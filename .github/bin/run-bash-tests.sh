@@ -27,7 +27,7 @@ download_verify_extract() {
   fi
 
   mkdir -p "$GITHUB_WORKSPACE"/bin
-  if tar --list -zf "$filename" | grep -q '/' > /dev/null; then
+  if tar --list -zf "$filename" | grep -q '/' >/dev/null; then
     tar -xzf "$filename" -C "$GITHUB_WORKSPACE/bin" --strip-components=1
   else
     tar -xzf "$filename" -C "$GITHUB_WORKSPACE/bin"
