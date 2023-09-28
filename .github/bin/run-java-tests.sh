@@ -37,7 +37,7 @@ download_verify_extract() {
 }
 
 run_exercism_test() {
-  for exercise in java/*/; do
+  for exercise in exercises/java/*/; do
     pushd "$exercise" || exit 1
 
     if ! exercism test; then

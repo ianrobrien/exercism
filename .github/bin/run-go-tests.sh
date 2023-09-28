@@ -43,7 +43,7 @@ download_verify_extract() {
 }
 
 lint_go_files() {
-  for exercise in go/*/; do
+  for exercise in exercises/go/*/; do
     pushd "$exercise" || exit 1
 
     if ! golangci-lint run .; then
