@@ -18,7 +18,7 @@ jobs:
         with:
           filters: |
             src:
-            - 'go/**'
+            - 'tracks/go/**'
       - uses: actions/setup-go@v4
         with:
           go-version: 1.21.1
