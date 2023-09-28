@@ -796,3 +796,7 @@ ij_html_space_around_equality_in_attribute = false
 ij_html_space_inside_empty_tag = false
 ij_html_text_wrap = normal
 ij_html_uniform_ident = false
+
+[*.py]
+indent_size = 4
+tab_width = 4
