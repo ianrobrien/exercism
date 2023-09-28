@@ -48,8 +48,13 @@ run_exercism_test() {
   done
 }
 
-download_verify_extract "$exercism_url" "$exercism_filename" "$exercism_expected_hash"
+main() {
+  declare -g exit_code=0
 
-run_exercism_test "$exercise"
+  download_verify_extract "$exercism_url" "$exercism_filename" "$exercism_expected_hash"
+  run_exercism_test "$exercise"
 
-exit $exit_code
+  exit $exit_code
+}
+
+main "$@"

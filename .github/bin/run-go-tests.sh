@@ -12,9 +12,6 @@ golangci_lint_base_url="https://github.com/golangci/golangci-lint/releases/downl
 golangci_lint_filename="golangci-lint-${golangci_lint_version}-linux-amd64.tar.gz"
 golangci_lint_url="${golangci_lint_base_url}/v${golangci_lint_version}/${golangci_lint_filename}"
 
-# Initialize the exit code to 0
-exit_code=0
-
 download_verify_extract() {
   local url="$1"
   local filename="$2"
@@ -66,10 +63,16 @@ run_exercism_test() {
   done
 }
 
-download_verify_extract "$exercism_url" "$exercism_filename" "$exercism_expected_hash"
-download_verify_extract "$golangci_lint_url" "$golangci_lint_filename" "$golangci_lint_expected_hash"
+main() {
+  declare -g exit_code=0
 
-lint_go_files "$exercise"
-run_exercism_test "$exercise"
+  download_verify_extract "$exercism_url" "$exercism_filename" "$exercism_expected_hash"
+  download_verify_extract "$golangci_lint_url" "$golangci_lint_filename" "$golangci_lint_expected_hash"
 
-exit $exit_code
+  lint_go_files "$exercise"
+  run_exercism_test "$exercise"
+
+  exit $exit_code
+}
+
+main "$@"

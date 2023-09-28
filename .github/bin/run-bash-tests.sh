@@ -6,9 +6,6 @@ exercism_base_url="https://github.com/exercism/cli/releases/download/"
 exercism_filename="exercism-${exercism_version}-linux-x86_64.tar.gz"
 exercism_url="${exercism_base_url}/v${exercism_version}/${exercism_filename}"
 
-# Initialize the exit code to 0
-exit_code=0
-
 download_verify_extract() {
   local url="$1"
   local filename="$2"
@@ -48,8 +45,13 @@ run_exercism_test() {
   done
 }
 
-download_verify_extract "$exercism_url" "$exercism_filename" "$exercism_expected_hash"
+main() {
+  declare -g exit_code=0
 
-run_exercism_test "$exercise"
+  download_verify_extract "$exercism_url" "$exercism_filename" "$exercism_expected_hash"
+  run_exercism_test "$exercise"
 
-exit $exit_code
+  exit $exit_code
+}
+
+main "$@"
