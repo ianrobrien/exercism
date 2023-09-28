@@ -1,5 +1,5 @@
 ---
-name: Java CI
+name: Python CI
 
 on:
   push:
@@ -8,8 +8,8 @@ on:
   pull_request:
 
 jobs:
-  java-ci:
-    name: Java CI
+  python-ci:
+    name: Python CI
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -18,12 +18,13 @@ jobs:
         with:
           filters: |
             src:
-            - 'tracks/java/**'
-      - uses: actions/setup-java@v3
+            - 'tracks/python/**'
+      - uses: actions/setup-python@v4
         with:
-          distribution: 'temurin' # See 'Supported distributions' for available options
-          java-version: '11'
-      - name: Lint and test exercises
+          python-version: '3.10'
+      - name: Test exercises
         shell: bash
         if: steps.changes.outputs.src == 'true'
-        run: ./.github/bin/run-java-tests.sh
+        run: |
+          pip3 install pytest
+          ./.github/bin/run-python-tests.sh

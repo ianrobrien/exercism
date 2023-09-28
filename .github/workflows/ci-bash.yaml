@@ -18,7 +18,7 @@ jobs:
         with:
           filters: |
             src:
-            - 'bash/**'
+            - 'tracks/bash/**'
       - name: Setup BATS
         uses: mig4/setup-bats@v1
         with:
