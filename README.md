@@ -4,7 +4,6 @@
 [![Golang CI](https://github.com/ianrobrien/exercism/actions/workflows/ci-golang.yaml/badge.svg?branch=main)](https://github.com/ianrobrien/exercism/actions/workflows/ci-golang.yaml)
 [![Java CI](https://github.com/ianrobrien/exercism/actions/workflows/ci-java.yaml/badge.svg?branch=main)](https://github.com/ianrobrien/exercism/actions/workflows/ci-java.yaml)
 [![Python CI](https://github.com/ianrobrien/exercism/actions/workflows/ci-python.yaml/badge.svg?branch=main)](https://github.com/ianrobrien/exercism/actions/workflows/ci-python.yaml)
-[![CodeQL](https://github.com/ianrobrien/exercism/actions/workflows/codeql.yml/badge.svg)](https://github.com/ianrobrien/exercism/actions/workflows/codeql.yml)
 
 This repository contains solutions to [Exercism](https://exercism.org/) exercises.
 
