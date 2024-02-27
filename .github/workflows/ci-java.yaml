@@ -11,6 +11,8 @@ jobs:
   java-ci:
     name: Java CI
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: dorny/paths-filter@v3
@@ -25,8 +27,6 @@ jobs:
           java-version: '11'
       - name: Maven Dependency Tree Dependency Submission
         uses: advanced-security/maven-dependency-submission-action@v4.0.1
-        permissions:
-          contents: write     
       - name: Lint and test exercises
         shell: bash
         if: steps.changes.outputs.src == 'true'
