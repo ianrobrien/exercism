@@ -20,13 +20,13 @@ jobs:
         with:
           filters: |
             src:
-            - 'tracks/java/**'
+              - 'tracks/java/**'
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin' # See 'Supported distributions' for available options
           java-version: '11'
       - name: Maven Dependency Tree Dependency Submission
-        uses: advanced-security/maven-dependency-submission-action@v4.0.1
+        uses: advanced-security/maven-dependency-submission-action@v4.0.0
       - name: Lint and test exercises
         shell: bash
         if: steps.changes.outputs.src == 'true'
